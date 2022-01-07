@@ -1,0 +1,105 @@
+:root {
+    --background: linear-gradient(135deg, #667eea7e 0%, #764ba298 100%);
+    --color-yellow1: #ffe83e;
+    --color-yellow2: #ffdd23;
+    --color-red:#a11a1e ; 
+    --color-blue: #233b56;
+    --black1: #1a1b1f;
+    --black2: #30353b;
+    --white: #ffff;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: 'Hammersmith One', sans-serif;
+    background:url(../assets/fondo-rojo.png);
+    font-size: 16px;
+}
+
+.form-container {
+    
+    width: 80%;
+    padding: 25px 0;
+    margin: 100px auto;
+    overflow: hidden;
+    border: solid 0.2px; 
+    box-shadow: 0 0 6px 10px var(--color-yellow2);
+    border-radius: 15px;
+    position: relative;
+    text-align: center;
+
+}
+
+.category__title {
+    width: 97%;
+    color: var(--color-blue);
+    background: url(../assets/fondo-register.png);
+    font-size: 3rem;
+    margin: 40px auto;
+    display: block;
+    text-align: center;
+    padding: 40px auto;
+    border: 2px solid var(--color-blue);
+    border-radius: 15px;
+    font-weight: 700;
+    box-shadow: 0px 0px 12px 2px;
+}
+
+article {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.card{  
+    margin: 50px auto;
+}
+
+.card__img{
+    position: relative;
+    width: 90%;
+    overflow: hidden;
+    object-fit: fill;  
+    margin: 10px auto;
+    border-radius: 8px;
+}
+
+
+.card__movie {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    margin: 0px 0px 10px 5px;
+    background: url(../assets/fondo-register.png);
+    border-radius: 12px;
+    position: relative;
+    border: 1px solid var(--color-yellow1);
+    box-shadow: 0px 0px 10px 2px var(--color-yellow2);
+}
+
+
+.card__movie:hover{
+    transition: 0.8s all;
+    transform: scale(1.1);
+    cursor: pointer;
+
+}
+
+.descripcion p {
+    text-align: center;
+}
+
+
+/* .footer{
+    position: absolute;
+    bottom: -300px;
+    width: 100%;
+} */

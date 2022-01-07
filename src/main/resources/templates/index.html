@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="/fragments/head :: head"></head>
+
+<body>
+    <header>
+        <nav th:replace="/fragments/nav-bar :: nav-bar"></nav>
+    </header>
+
+    <main class="">
+
+        <section class="disney">
+            <div class="container article__title">
+                <h2 class="disney__title">Bienvenido al Mundo de Disney</h2>
+                <p class="disney__subtitle">Por donde quieres comenzar?</p>
+            </div>
+
+            <div class="container container__grid">
+
+                <!-- <div class="vistas__prueba"> -->
+
+                <a th:href="@{/movie/form}" class="card__button">Crear Peliculas</a>
+                <a th:href="@{/animated/form}" class="card__button">Crear Personaje Animado</a>
+                <a th:href="@{/gender/form}" class="card__button">Crear Genero</a>
+
+                <!-- <a th:href="@{/qualification/form}" class="card__button">Crear Calificacion</a> -->
+                <!-- <a th:href="@{/movie/films}" class="card__button">Ver Peliculas</a> -->
+                <!-- <a th:href="@{/animated/characters}" class="card__button">Ver Personajes</a> -->
+
+                <!-- </div> -->
+
+                <article class="container__cards">
+                    <div class="card">
+                        <img src="/assets/portada-peliculas1.jpg" class="card__img">
+                        <div class="cards_text">
+                            <p class="card_list">Peliculas y Series</p>
+                            <p class="card__copy">En este apartado podras encontrar todas las Peliculas y Series
+                                de tus personajer Favoritos y divertirte junto a ellos y tu familia!</p>
+                            <a th:href="@{/movie/films}" class="button">Ver Peliculas y series</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="container__cards">
+                    <div class="card">
+                        <img src="/assets/portada-personajes1.jpg" class="card__img">
+                        <div class="cards_text">
+                            <p class="card_list">Personajes</p>
+                            <p class="card__copy">Aqui podras encontrar todos tus Personajes Favoritos y conocerlos
+                                a mas a Fondo, Convierte en un experto en la materia!</p>
+                            <a th:href="@{/animated/characters}" class="button">Mostrar Personajes</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer__suscripcion">
+            <section class="download__section">
+                <h3 class="title__footer">Descarga nuestra App</h3>
+
+                <div class="download__app">
+                    <a href="https://apps.apple.com" class="download__item" target="_blank">
+                        <i class="fab fa-apple download__logo"></i>
+                        <h4 class="download__title">App Store</h4>
+                    </a>
+                    <a href="https://play.google.com/store/apps" class="download__item" target="_blank">
+                        <i class="fab fa-google-play download__logo--play"></i>
+                        <h4 class="download__title">Play Store</h4>
+                    </a>
+                </div>
+                <div class="footer__copy">
+                    <p class="copyright">DISNEY WORLD &copy; 2022 Todos los derechos reservados</p>
+                    <div class="cookies">
+                        <a href="https://apps.apple.com/story/id1539235847" target="_blank"
+                            class="politica__privacidad ">Politica de privacidad</a>
+                        <a href="https://apps.apple.com/story/id1539235847" target="_blank"
+                            class="politica__privacidad">Terminos y condiciones</a>
+                    </div>
+                </div>
+            </section>
+            <section class="get-email">
+                <h3 class="title__footer">Para contenido exclusivo!</h3>
+                <form class="newsletter newsletter--modifier">
+                    <input type="text" class="newsletter__input" placeholder="Ingresa tu email">
+                    <input type="submit" class="newsletter__submit" value="Suscribirse">
+                </form>
+                <div class="socialmedia">
+                    <p class="socialmedia__legend2">Canales de Comunicación: +54 0351 5715300 | Int. 155 </p>
+                </div>
+                <div class="socialmedia">
+                    <p class="socialmedia__legend">Síguenos en:</p>
+                    <a href="" target="_blank"><i class="fab fa-facebook-f socialmedia__icon"></i></a>
+                    <a href="" target="_blank"><i class="fab fa-instagram socialmedia__icon"></i></a>
+                    <a href="" target="_blank"><i class="fab fa-tiktok socialmedia__icon"></i></a>
+                    <a href="" target="_blank"><i class="fab fa-whatsapp socialmedia__icon"></i></a>
+                </div>
+            </section>
+        </div>
+
+        <div class="contact">
+            <div class="item__contact">
+                <i class='bx bx-copyright contact__icon'></i>
+                <p class="contact__title">Copyright © 2022 | Desarrollado por Jonathan Bolatti | Chanllenge</p>
+                <div class="logo-container">
+                    <img class="logo-footer logo-footerbs" src="/assets/logo.alkemy.svg" alt="">
+                </div>
+            </div>
+        </div>
+
+    </footer>
+    </script>
+    <script src="https://kit.fontawesome.com/5208273844.js" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

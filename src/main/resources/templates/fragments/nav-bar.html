@@ -1,0 +1,22 @@
+<header>
+    <nav th:fragment="nav-bar" class="">
+
+        <figure>
+            <a href="/" class="imagen__logo">
+                <div class="img1">
+                    <img src="/assets/img-register.png" alt="logo de Disney">
+                </div>
+                <div class="img2">
+                    <img src="/assets/Walt-Disney-World-Logo.png" alt="">
+                </div>
+            </a>
+        </figure>
+     
+        <ul class="menu__hamburger">
+            <li> <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/panel-admin}">Panel Admin</a></li>
+            <li> <a sec:authorize="!isAuthenticated()" th:href="@{/auth/register}" class="nav__items">Registrarse</a></li>
+            <li> <a sec:authorize="isAuthenticated()" th:href="@{/logout}" class="nav__items">Logout</a></li>
+            <li> <a sec:authorize="!isAuthenticated()" th:href="@{/auth/login}" class="nav__items">Login</a></li>
+        </ul>
+    </nav>
+</header>

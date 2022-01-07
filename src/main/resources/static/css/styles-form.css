@@ -1,0 +1,206 @@
+/* VARIABLES DEFINIDIAS */
+:root {
+    --background: linear-gradient(135deg, #667eea7e 0%, #764ba298 100%);
+    --color-yellow1: #ffe83e;
+    --color-yellow2: #ffdd23;
+    --color-red: #a11a1e;
+    --color-blue: #233b56;
+    --black1: #1a1b1f;
+    --black2: #30353b;
+    --white: #ffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Hammersmith One', sans-serif;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background: url(../assets/fondo-rojo.png);
+}
+
+/* FORMULARIO DE registro*/
+
+.form-register {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: var(--black2);
+
+}
+
+.form-container {
+    
+    width: 80%;
+    padding: 25px 0;
+    margin: 100px auto;
+    overflow: hidden;
+    border: solid 0.2px; 
+    box-shadow: 0 0 6px 10px var(--color-yellow2);
+    border-radius: 15px;
+    position: relative;
+    text-align: center;
+
+}
+
+.img-form {
+    width: 100px;
+    position: relative;
+    left: -350px;
+}
+
+.img__pjminy{
+    width: 22rem;
+    position: relative;
+    right: -300px;
+
+}
+
+.form {
+    background: url(../assets/fondo-register.png);
+    padding: 20px 30px;
+    box-shadow: 0 0 6px 4px rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    width: 100%;
+    margin: 50px auto 10px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.form-title {
+    text-align: center;
+    font-weight: bold;
+    color: var(--color-blue);
+}
+
+.form .grupo {
+    position: relative;
+    margin: 45px;
+   
+}
+
+.input {
+    background: none;
+    color: var(--color-blue);
+    font-size: 1rem;
+    padding: 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid var(--color-red);
+}
+
+.input:focus {
+    outline: none;
+    color: var(--color-blue);
+}
+
+.label {
+    color: var(--color-blue);
+    font-size: 16px;
+    font-weight: bold;
+    position: absolute;
+    left: 5px;
+    top: 10px;
+    transition: 0.7s ease all;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+/* input:valid para que no se superpongan los textos del label */
+input:focus~label,
+input:valid~label {
+    top: -15px;
+    font-size: 12px;
+    color: var(--color-red);
+}
+
+.barra {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+/* efecto de barra cargando del label */
+.barra::before {
+    content: "";
+    height: 2px;
+    width: 0%;
+    bottom: 0%;
+    position: absolute;
+    background: linear-gradient(to top, hsla(213, 44%, 29%, 0.638), #1b2f62);
+    transition: 0.5s ease width;
+    left: 0%;
+}
+
+.input:focus~.barra::before {
+    width: 100%;
+}
+
+.button__submit {
+    align-items: center;
+    background: #1b2f62;
+    background: -webkit-linear-gradient(to top, hsla(213, 44%, 29%, 0.638), #1b2f62);
+    background: linear-gradient(to top, hsla(213, 44%, 29%, 0.638), #1b2f62);
+    border-radius: 10px;
+    border: 2px solid;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 1rem;
+    font-weight: 700;
+    width: 20rem;
+    height: 3.125rem;
+    justify-content: center;
+    padding: 20px 40px;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all .3s ease-in-out;
+    border-color: var(--color-yellow2);
+    color: var(--color-yellow1);
+    display: flex;
+    margin: 0% auto;
+}
+
+
+.button__submit:hover {
+    background-color: rgba(255, 255, 255, .2);
+    color: #fff;
+    text-shadow: 0 0 7px var(--color-primary), 0 0 10px var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.button__submit a{
+    text-decoration: none;
+    color: var(--color-yellow1);
+}
+
+.button--login{
+    margin-top: 40px;
+}
+
+
+.confirmacion__mail {
+    font-size: 11px;
+    text-align: center;
+    margin-top: 22px;
+
+}
+
+.login__clic {
+    text-decoration: none;
+    color: var(--color-blue);
+}
+
+.logo-footerbs{
+    margin: auto 0;
+}
+
+
+

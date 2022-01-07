@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="Jonathan Bolatti">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/assets/logo-principal.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/styles-form.css">
+   
+</head>
+
+<body>
+    <header>
+        <nav th:replace="/fragments/nav-bar :: nav"></nav>
+    </header>
+
+
+    <div class="container">
+        <div th:if="${error}" class="alert alert-warning" mt-3 role="alert">
+            <span th:text="${error}"> </span>
+        </div>
+        <div th:if="${success}" class="alert alert-success" role="alert">
+            <span th:text="${success}"> </span>
+        </div>
+        <section class="form-register">
+            <form action="/movie/save" method="POST" th:object="${pelicula}" enctype="multipart/form-data">
+                <input hidden th:field="*{id}">
+                <div class="form">
+                    <h1 class="form-title">Crear una Pelicula o Serie</h1>
+                    <div class="grupo">
+                        <label class="label" for="title">Nombre Pelicula o Serie</label><br>
+                        <input class="input" type="text" name="title" required th:field="*{title}"><span
+                            class="barra"></span>
+                    </div>
+                    <div class="grupo">
+                        <label class="label" for="dateCreation">Ingrese fecha de creacion</label><br>
+                        <input class="input" type="date" name="dateCreation" th:field="*{dateCreation}" required><span
+                            class="barra"></span>
+                    </div>
+                    <div class="grupo">
+                        <label class="label" for="genero">Seleccione Genero</label><br>
+                        <select class="input" th:field="*{gender}">
+                            </span>
+                            <option th:each="g : ${generos}" th:text="${g.name}" th:value="${g.id}"></option>
+                        </select>
+                    </div>
+                    <div class="grupo">
+                        <label for="qualification" class="label">Seleccione Calificacion</label><br>
+                        <select class="input" th:field="*{qualification}" style="width: 150px;">
+                            <option th:each="c : ${calificaciones}" th:text="${c.score}" th:value="${c.id}">
+                            </option>
+                        </select>
+                    </div>
+                    <div class="grupo">
+                        <input class="input" type="file" name="imagen" id="imagen">
+                        <label class="label" for="">Foto de la pelicula</label>
+                    </div>
+
+                    <div class="grupo">
+                        <button class="button__submit" type="submit">Registrar Pelicula/Serie</button><br>
+                        <button class="button__submit"><a th:href="@{/movies/list}">Lista de Peliculas</a></button>
+                        <p class="msj-error" th:if="${error}" th:text="${error} ">Ocurrió un error</p>
+
+                        <p class="confirmacion__mail" style="font-size: 16px;"><b><a class="login__clic"
+                                    th:href="@{/animated/form}">Ir a crear Personajes</a></b></p>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+    </div>
+
+    <script src="/https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+        integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous">
+    </script>
+    <script src="/https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"
+        integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous">
+    </script>
+    <footer th:replace="/fragments/footers :: footer-fragment-formularios"></footer>
+</body>
+
+</html>

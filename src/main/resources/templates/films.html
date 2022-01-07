@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="author" content="Jonathan Bolatti">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="/assets/logo-principal.png" type="image/x-icon">
+  <link rel="stylesheet" href="/css/styles-cards.css">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+  <header>
+    <nav th:replace="/fragments/nav-bar :: nav"></nav>
+  </header>
+  <main>
+    <section>
+      <div class="container">
+        <p class="category__title">Peliculas</p>
+        <article>
+          <div class="card__movie" th:each="j : ${films}">
+            <img class="card__img" th:src="${'/photo/films?id='}+${j.id}" alt="">
+            <div class="descripcion">
+              <p th:text="${j.title}"></p>
+              <p th:text="'Lanzamiento: ' + ${#dates.format(j.dateCreation, 'dd/MM/yyyy')}"></p>
+                  <p th:text="'Calificacion: ' + ${j.qualification.score}"></p>
+                  <p th:text="'Genero: ' + ${j.gender.name}"></p>
+                </div>
+              </div>
+        </article>
+        </div>
+    </section>
+  </main>
+  <footer th:replace="/fragments/footers :: footer-fragment-formularios"></footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+        
+    </body>
+</html>
