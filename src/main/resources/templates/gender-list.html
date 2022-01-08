@@ -26,18 +26,18 @@
 
       
       <div class="barra-titulo">
-        <p class="sector-admin">Lista de Personajes</p>
+        <p class="sector-admin">Lista de Generos</p>
       </div>
 
-      <form class="row-filtro" th:action="@{/characters/list}" method="GET" style="width: 50%; margin: 0 auto;">
+      <form class="row-filtro" th:action="@{/gender/list}" method="GET" style="width: 50%; margin: 0 auto;">
         <div class="col-auto">
             <input type="text" name="query" class="form-control" placeholder="Filtrar">
           </div>
           <div class="col-auto">
             <button type="submit" class="btn-buscar mb-3" style="margin-top: 10px;">Buscar</button>
-            <a th:href="@{/characters/list}" class="button4" >Limpiar filtro</a>
+            <a th:href="@{/gender/list}" class="button4" >Limpiar filtro</a>
             <br>
-            <button class="button"><a th:href="@{/characters/form}">Crear Personaje</a></button>
+            <button class="button"><a th:href="@{/gender/form}">Crear Genero</a></button>
           </div>
     </form>
     <section class="mt-5" style="margin: 0 auto; ">
@@ -45,24 +45,18 @@
             <thead >
               <tr style="width: 50%; margin: 0 auto; ">
                 <th>Nº</th>
-                    <th>Nombre</th>
-                    <th>Edad</th>
-                    <th>Peso</th>
-                    <th>Historia</th>
+                    <th>Categoria</th>
                     <th style="text-align: center;" >Acciones</th>
                   </tr>
                 </thead>
                 
             <tbody >
-              <tr th:each='characters,iterator : ${characters}'>
+              <tr th:each='genero,iterator : ${generos}'>
                 <td th:text="${iterator.index+1}"></td>
-                    <td th:text="${characters.name}"></td>
-                    <td th:text="${characters.age}"></td>
-                    <td th:text="${characters.weight}"></td>
-                    <td th:text="${characters.lore}"></td>
+                    <td th:text="${genero.name}"></td>
                     <td>
-                      <button class="btn-dark"><a th:href="@{/animated/delete}+'?id='+${characters.id}" class="px-5 py-2" >Eliminar</a></button>
-                      <button class="btn-dark"><a th:href="@{/animated/form}+'?id='+${characters.id}" class="px-5 py-2" >Editar</a></button>
+                      <button class="btn-dark"><a th:href="@{/gender/delete}+'?id='+${genero.id}" class="px-5 py-2" >Eliminar</a></button>
+                      <button class="btn-dark"><a th:href="@{/gender/form}+'?id='+${genero.id}" class="px-5 py-2" >Editar</a></button>
                     </td>
                   </tr>
                 </tbody>

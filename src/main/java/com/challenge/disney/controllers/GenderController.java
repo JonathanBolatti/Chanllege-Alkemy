@@ -31,7 +31,7 @@ public class GenderController {
         }else{
             model.addAttribute("generos", genderService.listAll());
         }
-        return "gender-list";
+        return "gender-list.html";
     }
 
     //@PreAuthorize("hasAnyRole('ROLE_ADMIN')")

@@ -68,7 +68,6 @@ public class QualificationService {
         Optional<Qualification> optional = qualificationRepo.findById(id);
         if (optional.isPresent()) {
             Qualification qualification = optional.get();
-            movieOrSerieService.deleteFieldQualification(qualification);
             qualificationRepo.delete(qualification);
         }
 

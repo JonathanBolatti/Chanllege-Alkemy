@@ -49,9 +49,8 @@ public class MovieOrSerieController {
 		} else {
 			model.addAttribute("peliculas", movieOrSerieService.listAll());
 		}
-		return "film-list";
+		return "films-list";
 	}
-
 
 	//@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	@GetMapping("/form")
@@ -61,7 +60,7 @@ public class MovieOrSerieController {
 			if (optional.isPresent()) {
 				model.addAttribute("pelicula", optional.get());
 			} else {
-				return "redirect:/movies/list";
+				return "redirect:/movie/list";
 			}
 		} else {
 			model.addAttribute("pelicula", new MovieOrSerie());
@@ -92,6 +91,6 @@ public class MovieOrSerieController {
 	@GetMapping("/delete")
 	public String delete(@RequestParam(required = true) String id) {
 		movieOrSerieService.deleteById(id);
-		return "redirect:/movies/list";
+		return "redirect:/movie/list";
 	}
 }

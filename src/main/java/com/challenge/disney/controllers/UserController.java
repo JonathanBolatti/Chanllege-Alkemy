@@ -32,10 +32,8 @@ public class UserController {
 		System.out.println(id);
 		if (id != null) {
 			Optional<User> optional = userService.findById(id);
-
 			if (optional.isPresent()) {
 				User user = optional.get();
-
 				model.addAttribute("user", user);
 			} else {
 				return "redirect:/user/list";
@@ -43,12 +41,10 @@ public class UserController {
 		} else {
 			model.addAttribute("user", new User());
 		}
-
 		return "register.html";
 
 	}
 
-		
 	//listar usuarios Registrados
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	@GetMapping("/list")
@@ -60,16 +56,15 @@ public class UserController {
 		}
 		return "user-list.html";
 	}
-	
-	
-	//Metodo para registrar un usuario
-	@PostMapping("/register")
-public String registeredUser(Model model, @ModelAttribute User user, RedirectAttributes redirectAttributes) throws Exception, ErrorService {
+
+
+	@PostMapping("/save")
+	public String registeredUser(Model model, @ModelAttribute User user, RedirectAttributes redirectAttributes) throws Exception, ErrorService {
 		try {
-			userService.save(user); 
+			userService.save(user);
 		} catch (ErrorService errorService) {
 			model.addAttribute("error", errorService.getMessage());
-			model.addAttribute("user",user); 
+			model.addAttribute("users", user);
 			return "register.html";
 		}
 
