@@ -8,27 +8,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  *
  * @author Jonathan
  */
-
 @Controller
 @RequestMapping("/auth")
 public class UserController {
-	
+
 	@Autowired
-	private UserService userService; 
-	
+	private UserService userService;
+
 	@GetMapping("/register")
 	public String userRegister(Model model, @RequestParam(required = false) String id) {
 
@@ -50,27 +47,28 @@ public class UserController {
 		return "register.html";
 
 	}
-	
+
+		
 	//listar usuarios Registrados
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	@GetMapping("/list")
 	public String userList(Model model, @RequestParam(required = false) String query) {
 		if (query != null) {
-			model.addAttribute("user", userService.listAllByQ(query));
+			model.addAttribute("users", userService.listAllByQ(query));
 		} else {
-			model.addAttribute("user", userService.listAll());
+			model.addAttribute("users", userService.listAll());
 		}
-		return "/html-administracion/usuario/usuario-list.html";
+		return "user-list.html";
 	}
 	
 	
 	//Metodo para registrar un usuario
 	@PostMapping("/register")
-public String registeredUser(Model model, @ModelAttribute User user, RedirectAttributes redirectAttributes) throws Exception {
+public String registeredUser(Model model, @ModelAttribute User user, RedirectAttributes redirectAttributes) throws Exception, ErrorService {
 		try {
 			userService.save(user); 
-		} catch (Exception w) {
-			model.addAttribute("error", w.getMessage());
+		} catch (ErrorService errorService) {
+			model.addAttribute("error", errorService.getMessage());
 			model.addAttribute("user",user); 
 			return "register.html";
 		}
@@ -79,7 +77,7 @@ public String registeredUser(Model model, @ModelAttribute User user, RedirectAtt
 		return "redirect:/";
 
 	}
-	
+
 	//Metodo para Eliminar un Usuario desde Rol Administrador 
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	@GetMapping("/delete")
@@ -87,12 +85,10 @@ public String registeredUser(Model model, @ModelAttribute User user, RedirectAtt
 		try {
 			userService.deleteById(id);
 			model.addAttribute("user", userService.listAll());
-			return "redirect:/user/list";
 		} catch (ErrorService ex) {
 			ex.getMessage();
 		}
-		return "redirect:/user/list";
+		return "redirect:/auth/list";
 	}
 
-	
 }

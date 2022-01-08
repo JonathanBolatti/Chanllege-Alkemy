@@ -18,6 +18,14 @@
     <header th:replace="/fragments/nav-bar :: nav-bar"></header>
     <main>
 
+        <div th:if="${error}" class="alert alert-warning" mt-3 role="alert">
+            <span th:text="${error}"> </span>
+        </div>
+        <div th:if="${success}" class="alert alert-success" role="alert">
+            <span th:text="${success}"> </span>
+        </div>
+
+
         <section class="form-register">
             <div class="img-form">
                 <img src="/assets/img-register.png" alt="">
@@ -26,8 +34,8 @@
                 <div class="form">
                     <h1 class="form-title">Registro</h1>
                     <div class="grupo">
-                        <input class="input" type="text" name="fullName" required><span class="barra"></span>
-                        <label class="label" for="name">Nombre</label>
+                        <input class="input" type="text" name="user" required><span class="barra"></span>
+                        <label class="label" for="user">Nombre</label>
                     </div>
                     <div class="grupo">
                         <input class="input" type="email" name="email" required><span class="barra"></span>

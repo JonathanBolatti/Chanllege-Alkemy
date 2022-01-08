@@ -7,6 +7,7 @@ import com.challenge.disney.services.MovieOrSerieService;
 import java.io.IOException;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,26 +38,17 @@ public class AnimatedCharacterController {
 
 	}
 
-	@GetMapping("/list")
-	public String lista2(Model model, @RequestParam(required = false) String query) {
-		if (query != null) {
-			model.addAttribute("characters", animatedCharacterService.findByName(query));
-		} else {
-			model.addAttribute("characters", animatedCharacterService.listAll());
-		}
-		return "characters-list";
-	}
 
 	/////DEVUELVE UNA LISTA DE PERSONAJES POR NOMBRE////
 	//@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
-	@GetMapping("/list-all")
+	@GetMapping("/list")
 	public String allList(Model model, @RequestParam(required = false) String query) {
 		if (query != null) {
 			model.addAttribute("characters", animatedCharacterService.findByName(query));
 		} else {
 			model.addAttribute("characters", animatedCharacterService.listAll());
 		}
-		return "characters-list-all";
+		return "characters-list";
 	}
 
 	//@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
@@ -92,11 +84,11 @@ public class AnimatedCharacterController {
 		return "redirect:/animated/form";
 	}
 
-	//@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	@GetMapping("/delete")
 	public String delete(@RequestParam(required = true) String id) {
 		animatedCharacterService.deleteById(id);
-		return "redirect:/characters/list";
+		return "redirect:/animated/list";
 	}
 
 }

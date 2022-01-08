@@ -19,7 +19,7 @@ public class MainController {
 	}
 	
 	//Permitir acceso al panel de administracion solo al administrador
-	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+	//@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	@GetMapping("/panel-admin")
 	public String login() {
 		return "panel-admin.html";

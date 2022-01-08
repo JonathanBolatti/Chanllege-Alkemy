@@ -40,7 +40,7 @@ public class UserService implements UserDetailsService{
 
 		String[] symbols = {"+", "=", "-", "*", "'"};
 
-		if (user.getFullName().isEmpty() || user.getFullName()== null) {
+		if (user.getUser().isEmpty() || user.getUser() == null) {
 			throw new ErrorService("Debe ingresar un Nombre de Usuario");
 		}
 		

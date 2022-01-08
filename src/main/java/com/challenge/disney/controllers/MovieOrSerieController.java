@@ -49,22 +49,13 @@ public class MovieOrSerieController {
 		} else {
 			model.addAttribute("peliculas", movieOrSerieService.listAll());
 		}
-		return "movies-list";
+		return "film-list";
 	}
 
-	@GetMapping("/list-all")
-	public String listAll(Model model, @RequestParam(required = false) String query) {
-		if (query != null) {
-			model.addAttribute("peliculas", movieOrSerieService.listallByQ(query));
-		} else {
-			model.addAttribute("peliculas", movieOrSerieService.listAll());
-		}
-		return "movies-list-all";
-	}
 
 	//@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	@GetMapping("/form")
-	public String crearPelicula(Model model, @RequestParam(required = false) String id) {
+	public String createFilm(Model model, @RequestParam(required = false) String id) {
 		if (id != null) {
 			Optional<MovieOrSerie> optional = movieOrSerieService.findById(id);
 			if (optional.isPresent()) {

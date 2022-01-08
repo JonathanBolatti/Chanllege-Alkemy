@@ -27,19 +27,19 @@ public class User implements Serializable, Comparable {
 	@GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
 	private String id;
-
-	private String fullName;
+	
+	private String user;
 	private String email;
 	private String password;
-	
-	@Enumerated(EnumType.STRING)
-	private Role role; 
-	
-	@Override
-    public int compareTo(Object t) {
-        User user = (User) t;
-        return this.fullName.compareTo(user.getFullName());
-    }
 
-	
+	@Enumerated(EnumType.STRING)
+	private Role role;
+
+	@Override
+	public int compareTo(Object t) {
+		User user = (User) t;
+		return this.user.compareToIgnoreCase(user.getUser()); 
+
+	}
+
 }

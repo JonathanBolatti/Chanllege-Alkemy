@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserRepository extends JpaRepository<User, String> {
 
-	@Query("select p from User p where p.fullName LIKE :query or "
+	@Query("select p from User p where p.user LIKE :query or "
 			+ "p.email LIKE :query")
 	List<User> findAllByQ(@Param("query") String query);
 
