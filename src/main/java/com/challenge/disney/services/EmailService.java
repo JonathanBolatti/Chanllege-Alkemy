@@ -16,13 +16,13 @@ public class EmailService {
 	@Autowired
 	public JavaMailSender mailSender; 
 	
-	public void enviarMail(String body, String title, String mail){
-		 SimpleMailMessage msj = new SimpleMailMessage();
-        msj.setTo(mail);
-        msj.setFrom("loscanuteros06@hotmail.com");
-        msj.setSubject(title);
-        msj.setText(body);
-        
-        mailSender.send(msj);
+	public void mailSender(String addressee, String subject, String container){
+		SimpleMailMessage mailMessage = new SimpleMailMessage(); 
+		mailMessage.setTo(addressee);
+		mailMessage.setSubject(subject);
+		mailMessage.setText(container);
+		
+		mailSender.send(mailMessage);
 	}
+	
 }

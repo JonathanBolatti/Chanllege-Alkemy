@@ -71,7 +71,7 @@ public class UserService implements UserDetailsService{
 
 		user.setRole(Role.USER);
 		
-		//mailService.enviarMail("Bienvenidos al Mundo de Disney!", "La Administracion", user.getEmail());
+		mailService.mailSender(user.getEmail(),"Bienvenidos al Mundo de Disney!", " Hola " + user.getUser() +", Se ha registrado correctamente!, ahora puedes disfrutar de todo el contenido exclusivo que tenemos para ti.");
 		return userRepo.save(user);
 	}
 	
