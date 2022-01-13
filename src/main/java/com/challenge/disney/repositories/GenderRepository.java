@@ -1,4 +1,3 @@
-
 package com.challenge.disney.repositories;
 
 import com.challenge.disney.entities.Gender;
@@ -11,8 +10,9 @@ import org.springframework.data.repository.query.Param;
  *
  * @author Jonathan
  */
-public interface GenderRepository extends JpaRepository<Gender, String>{
-	 @Query("select g from Gender g where g.name LIKE :q")
-    List<Gender> findAll(@Param("q") String q);
+public interface GenderRepository extends JpaRepository<Gender, String> {
+	
+	@Query("SELECT g FROM Gender g WHERE g.name LIKE :name ORDER by name ASC")
+    List<Gender> findAllByQ(@Param("name") String name);
 	
 }

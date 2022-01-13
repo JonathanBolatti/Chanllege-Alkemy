@@ -16,11 +16,6 @@ public interface QualificationRepository extends JpaRepository<Qualification, St
 	
 	  @Query("select X from Qualification X where X.id LIKE :q or X.score LIKE :q")
     List<Qualification> findAll(@Param("q") String q);
-	
-//	@Query("select j from Qualification j where j.calificacion LIKE j.qualification = :q")
-//    List<Qualification> findAllByQualifications(@Param("q") String q);
-	
-//	@Query("select j from Jugador j where j.posicion.nombre = :q")
-//    List<Jugador> findAllByPosicion(@Param("q") String q);
+
 }
 

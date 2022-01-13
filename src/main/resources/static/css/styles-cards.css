@@ -2,7 +2,7 @@
     --background: linear-gradient(135deg, #667eea7e 0%, #764ba298 100%);
     --color-yellow1: #ffe83e;
     --color-yellow2: #ffdd23;
-    --color-red:#a11a1e ; 
+    --color-red: #a11a1e;
     --color-blue: #233b56;
     --black1: #1a1b1f;
     --black2: #30353b;
@@ -19,17 +19,17 @@
 
 body {
     font-family: 'Hammersmith One', sans-serif;
-    background:url(../assets/fondo-rojo.png);
+    background: url(../assets/fondo-rojo.png);
     font-size: 16px;
 }
 
 .form-container {
-    
+
     width: 80%;
     padding: 25px 0;
     margin: 100px auto;
     overflow: hidden;
-    border: solid 0.2px; 
+    border: solid 0.2px;
     box-shadow: 0 0 6px 10px var(--color-yellow2);
     border-radius: 15px;
     position: relative;
@@ -59,15 +59,15 @@ article {
     flex-wrap: wrap;
 }
 
-.card{  
+.card {
     margin: 50px auto;
 }
 
-.card__img{
+.card__img {
     position: relative;
     width: 90%;
     overflow: hidden;
-    object-fit: fill;  
+    object-fit: fill;
     margin: 10px auto;
     border-radius: 8px;
 }
@@ -86,7 +86,7 @@ article {
 }
 
 
-.card__movie:hover{
+.card__movie:hover {
     transition: 0.8s all;
     transform: scale(1.1);
     cursor: pointer;
@@ -97,9 +97,42 @@ article {
     text-align: center;
 }
 
+/* Encabezado listas */
 
-/* .footer{
-    position: absolute;
-    bottom: -300px;
-    width: 100%;
-} */
+.barra-titulo {
+    display: flex;
+    margin: 20px;
+    justify-content: center;
+
+}
+
+.sector-admin {
+    width: 95%;
+    color: #fff;
+    font-size: 3rem;
+    text-align: center;
+    border: 2px solid var(--color-primary);
+    background: var(--black2);
+    border-radius: 15px;
+    font-weight: 700;
+    box-shadow: 0px 0px 12px 2px;
+}
+
+/* Buscador de entidades */
+
+.form__list {
+    width: 50%;
+    margin: 50px auto;
+}
+
+.search__list {
+    margin: 20px auto;
+}
+
+.buttons__list {
+    display: flex;
+}
+
+.button{
+    margin: 5px 40px;
+}

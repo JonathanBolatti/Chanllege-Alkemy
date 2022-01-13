@@ -14,22 +14,19 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AnimatedCharacterRepository extends JpaRepository<AnimatedCharacter, String> {
 
- 
-    //para buscar por nombre : /characters?name=nombre
-    @Query("SELECT p FROM AnimatedCharacter p where p.name like :name")
-    List<AnimatedCharacter> findByName(@Param("name") String name);
+	//para buscar por nombre : /characters?name=nombre
+	@Query("SELECT p FROM AnimatedCharacter p WHERE p.name LIKE :query")
+	List<AnimatedCharacter> findByName(@Param("query") String query);
 
-    
-    //para buscar por edad : /characters?age=edad
-    @Query("SELECT p FROM AnimatedCharacter p where p.age = :age")
-    public List<AnimatedCharacter> findByAge(@Param("age") Integer age);
-    
-    
-    //para buscar por movies : /characters?movies=idMovie
-     @Query("SELECT p from AnimatedCharacter p where p.id = :film")
-    List<AnimatedCharacter> listAllFilm(@Param("film") String film);
+	//para buscar por edad : /characters?age=edad
+	@Query("SELECT p FROM AnimatedCharacter p where p.age = :age")
+	public List<AnimatedCharacter> findByAge(@Param("age") Integer age);
+
+	//para buscar por movies : /characters?movies=idMovie
+	@Query("SELECT p from AnimatedCharacter p where p.id = :film")
+	List<AnimatedCharacter> listAllFilm(@Param("film") String film);
 
 	@Query("select p from AnimatedCharacter p where p.id = :id")
 	AnimatedCharacter searchForId(@Param("id") String id);
-	
+
 }

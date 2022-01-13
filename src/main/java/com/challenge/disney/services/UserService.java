@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Optional;
 import com.challenge.disney.enums.Role;
 import com.challenge.disney.repositories.UserRepository;
+import java.util.Collections;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,8 +77,9 @@ public class UserService implements UserDetailsService{
 	}
 	
 	public List<User> listAll() {
-		List<User> lista = userRepo.findAll();
-		return lista;
+		List<User> list = userRepo.findAll();
+		Collections.sort(list);
+		return list;
 	}
 
 	//cree este servicio (jonathan)

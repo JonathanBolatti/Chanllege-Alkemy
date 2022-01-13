@@ -29,6 +29,16 @@
         <p class="sector-admin">Lista de Personajes</p>
       </div>
 
+      <form class="form__list" th:action="@{/animated/list}" method="GET">
+        <div class="search__list">
+          <input type="text" name="query" class="form-control" placeholder="ingrese su consulta aqui">
+        </div>
+        <div class="buttons__list">
+          <button type="submit" class="button">Buscar</button>
+          <a th:href="@{/animated/list}"  class="button">Limpiar filtro</a>
+        </div>
+      </form>
+<!-- 
       <form class="row-filtro" th:action="@{/characters/list}" method="GET" style="width: 50%; margin: 0 auto;">
         <div class="col-auto">
             <input type="text" name="query" class="form-control" placeholder="Filtrar">
@@ -39,7 +49,7 @@
             <br>
             <button class="button"><a th:href="@{/characters/form}">Crear Personaje</a></button>
           </div>
-    </form>
+    </form> -->
     <section class="mt-5" style="margin: 0 auto; ">
         <table class="table table-dark table-hover"> 
             <thead >

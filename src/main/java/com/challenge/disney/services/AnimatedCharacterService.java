@@ -6,6 +6,7 @@ import com.challenge.disney.entities.Photo;
 import com.challenge.disney.repositories.AnimatedCharacterRepository;
 import com.challenge.disney.exception.ErrorService;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
@@ -60,11 +61,12 @@ public class AnimatedCharacterService {
 
 	public List<AnimatedCharacter> listAll() {
 		List<AnimatedCharacter> list = animatedCharacterRepo.findAll();
+		Collections.sort(list);
 		return list;
 	}
 
-	public List<AnimatedCharacter> findByName(String name) {
-		List<AnimatedCharacter> list = animatedCharacterRepo.findByName("%" + name + "%");
+	public List<AnimatedCharacter> findByName(String query) {
+		List<AnimatedCharacter> list = animatedCharacterRepo.findByName("%" + query + "%");
 		return list;
 	}
 

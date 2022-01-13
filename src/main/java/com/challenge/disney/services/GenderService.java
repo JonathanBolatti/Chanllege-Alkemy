@@ -3,6 +3,7 @@ package com.challenge.disney.services;
 import com.challenge.disney.entities.Gender;
 import com.challenge.disney.exception.ErrorService;
 import com.challenge.disney.repositories.GenderRepository;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
@@ -28,13 +29,17 @@ public class GenderService {
 	}
 
 	public List<Gender> listAll() {
-		List<Gender> lista = genderRepo.findAll();
-		return lista;
+		List<Gender> list = genderRepo.findAll();
+		Collections.sort(list);
+		return list;
 	}
 
-	public List<Gender> listAll(String q) {
-		return genderRepo.findAll("%" + q + "%");
+	public List<Gender> findAllByQ(String query) {
+		List<Gender> list = genderRepo.findAllByQ("%" + query + "%");
+		return list;
 	}
+	
+
 
 	public Optional<Gender> findById(String id) {
 		return genderRepo.findById(id);

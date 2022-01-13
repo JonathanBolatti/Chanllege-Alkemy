@@ -25,9 +25,9 @@ public class GenderController {
 	
 	//@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/list")
-    public String listarGeneroes(Model model,@RequestParam(required = false) String q) {
-        if (q != null) {
-            model.addAttribute("generos", genderService.listAll(q));
+    public String listarGeneroes(Model model,@RequestParam(required = false) String query) {
+        if (query != null) {
+            model.addAttribute("generos", genderService.findAllByQ(query));
         }else{
             model.addAttribute("generos", genderService.listAll());
         }

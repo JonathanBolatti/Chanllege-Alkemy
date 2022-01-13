@@ -25,8 +25,8 @@ public interface MovieOrSerieRepository extends JpaRepository<MovieOrSerie, Stri
 	@Query("select m from MovieOrSerie m where m.qualification = :q")
     List<MovieOrSerie> findAllByQualification(@Param("q") String q);
 
-    @Query("SELECT p from MovieOrSerie p where p.gender = :estilo")
-    List<MovieOrSerie> findByGenero(@Param("estilo") String estilo);
+    @Query("SELECT m from MovieOrSerie m where m.gender like :q")
+    List<MovieOrSerie> findByGenero(@Param("q") String q);
 
     @Query("SELECT p from MovieOrSerie p order by :order")
     List<MovieOrSerie> orderBy(@Param("order") String order);

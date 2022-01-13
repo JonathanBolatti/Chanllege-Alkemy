@@ -28,13 +28,13 @@
         <p class="sector-admin">Lista de Usuarios</p>
       </div>
       
-      <form class="row-filtro" th:action="@{/auth/list}" method="GET" style="width: 50%; margin: 0 auto;">
-        <div class="col-auto">
-          <input type="text" name="query" class="form-control" placeholder="Filtrar">
+      <form class="form__list" th:action="@{/auth/list}" method="GET">
+        <div class="search__list">
+          <input type="text" name="query" class="form-control" placeholder="ingrese su consulta aqui">
         </div>
-        <div class="col-auto">
-          <button type="submit" class="btn-buscar mb-3" style="margin-top: 10px;">Buscar</button>
-          <a th:href="@{/auth/list}" class="button4">Limpiar filtro</a>
+        <div class="buttons__list">
+          <button type="submit" class="button">Buscar</button>
+          <a th:href="@{/auth/list}" class="button">Limpiar filtro</a>
         </div>
       </form>
       

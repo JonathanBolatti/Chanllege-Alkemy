@@ -5,8 +5,10 @@ import com.challenge.disney.entities.MovieOrSerie;
 import com.challenge.disney.entities.Photo;
 import com.challenge.disney.entities.Qualification;
 import com.challenge.disney.exception.ErrorService;
+import com.challenge.disney.repositories.GenderRepository;
 import com.challenge.disney.repositories.MovieOrSerieRepository;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
@@ -25,6 +27,9 @@ public class MovieOrSerieService {
 	private MovieOrSerieRepository movieOrSerieRepo;
 	
 	@Autowired
+	private GenderRepository genderRepository; 
+	
+	@Autowired
 	public PhotoService photoservice;
 
 	public MovieOrSerie save(MovieOrSerie film, MultipartFile image) throws ErrorService, IOException {
@@ -36,24 +41,25 @@ public class MovieOrSerieService {
 		}
 
 		Photo pic = photoservice.savePhoto(image);
-		film.setPhoto(pic);
+//		film.setPhoto(pic);
 		return movieOrSerieRepo.save(film);
 
 	}
 
 	public List<MovieOrSerie> listAll() {
 		List<MovieOrSerie> list = movieOrSerieRepo.findAll();
+		Collections.sort(list);
 		return list;
 	}
 
-	//dejar este servicio
 	public List<MovieOrSerie> listallByQ(String query) {
 		List<MovieOrSerie> list = movieOrSerieRepo.findAllByQ("%" + query + "%");
 		return list;
 	}
-	//metodo creado para ver si se soluciona el error en la query 2
-	public List<MovieOrSerie> findByGenero(String gender) {
-		return movieOrSerieRepo.findByGenero(gender);
+	
+	public List<MovieOrSerie> findByGenero(String q) {
+		List<MovieOrSerie> list = movieOrSerieRepo.findByGenero("%" + q + "%");
+		return list; 
 	}
 
 	public Optional<MovieOrSerie> findById(String id) {
